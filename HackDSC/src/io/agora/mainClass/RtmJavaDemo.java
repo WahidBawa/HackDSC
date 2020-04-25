@@ -18,7 +18,7 @@ import io.agora.rtm.RtmStatusCode;
 import io.agora.rtm.RtmChannelAttribute;
 
 class APPID {
-    public static final String APP_ID = "";
+    public static final String APP_ID = "2ff851eaa06143048058a623324cb095";
 }
 
 class ChannelListener implements RtmChannelListener {
