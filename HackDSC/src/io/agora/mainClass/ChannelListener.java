@@ -29,7 +29,7 @@ class ChannelListener implements RtmChannelListener {
         String account = fromMember.getUserId();
         String msg = message.getText();
 
-        mainFrame.addMessage("\n\n" + account + ": " + msg);
+        mainFrame.addMessage("\n\n" + account + ": " + msg + "\n");
 
 //        System.out.println("\n\n\n" + account + ": " + msg);
     }
