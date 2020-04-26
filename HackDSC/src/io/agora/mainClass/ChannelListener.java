@@ -9,9 +9,10 @@ import java.util.List;
 
 class ChannelListener implements RtmChannelListener {
     private String channel_;
-
-    public ChannelListener(String channel) {
+    public MainFrame mainFrame;
+    public ChannelListener(String channel, MainFrame mainFrame) {
         channel_ = channel;
+        this.mainFrame = mainFrame;
     }
 
     @Override
@@ -27,8 +28,10 @@ class ChannelListener implements RtmChannelListener {
             final RtmMessage message, final RtmChannelMember fromMember) {
         String account = fromMember.getUserId();
         String msg = message.getText();
-        System.out.println("Receive message from channel: " + channel_ +
-                " member: " + account + " message: " + msg);
+
+        mainFrame.addMessage("\n\n" + account + ": " + msg);
+
+//        System.out.println("\n\n\n" + account + ": " + msg);
     }
 
     @Override

@@ -106,7 +106,7 @@ public class RtmJavaDemo {
         String msg;
         int counter = 0;
         mRtmChannel = mRtmClient.createChannel(channel,
-                new ChannelListener(channel));
+                new ChannelListener(channel, mainFrame));
         if (mRtmChannel == null) {
             System.out.println("channel created failed!");
             return;
@@ -124,29 +124,11 @@ public class RtmJavaDemo {
             }
         });
 
-//        while(true) {
-//            System.out.println("please input message you want to send,"+
-//                    " or input \'quit\' " + " to leave groupChat, " +
-//                    "or input \'members\' to list members");
-//            msg = scn.nextLine();
-//            if (msg.equals("quit")) {
-//                mRtmChannel.leave(null);
-//                mRtmChannel.release();
-//                mRtmChannel = null;
-//                return;
-//            } else if (msg.equals("members")) {
-//                getChannelMemberList();
-//            } else {
-//                sendChannelMessage(msg);
-//            }
-//        }
-
         while (true) {
             if (counter == 0){
-                mainFrame.addMessage("please input message you want to send," + " or input \'quit\' " + " to leave groupChat, " + "or input \'members\' to list members");
+                mainFrame.addMessage("please input message you want to send," + "\nor input \'quit\' " + " to leave groupChat, " + "\nor input \'members\' to list members");
                 counter++;
             }
-//            msg = mainFrame.getMessage();
 
             if (!mainFrame.getMessage().equals("")){
                 System.out.println("MSG: " + mainFrame.getMessage());
@@ -159,7 +141,6 @@ public class RtmJavaDemo {
                     getChannelMemberList();
                 } else{
                     sendChannelMessage(mainFrame.getMessage());
-                    counter = 0;
                     mainFrame.clearMessage();
                 }
             } else{
@@ -230,9 +211,8 @@ public class RtmJavaDemo {
     }
 
     public static void main(String[] args) {
-
-        ////////////////////////////////////////////////////////////
         MainFrame mainFrame = new MainFrame("FriendMe");
+        ////////////////////////////////////////////////////////////
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = mainFrame;
@@ -267,9 +247,6 @@ public class RtmJavaDemo {
                     break;
                 }
             }
-//            } else {
-//                continue;
-//            }
         }
         System.out.println("leaving demo...");
         System.exit(0);
