@@ -1,5 +1,6 @@
 package io.agora.mainClass;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -86,20 +87,6 @@ public class RtmJavaDemo {
         mRtmClient.logout(null);
     }
 
-    public void p2pChat(String dst) {
-        String msg;
-        while (true) {
-            System.out.println("please input message you want to send," +
-                    " or input \'quit\' " + " to leave p2pChat");
-            msg = scn.nextLine();
-            if (msg.equals("quit")) {
-                return;
-            } else {
-                sendPeerMessage(dst, msg);
-            }
-        }
-    }
-
     public void groupChat(String channel, MainFrame mainFrame) {
         String msg;
         int counter = 0;
@@ -112,23 +99,26 @@ public class RtmJavaDemo {
         mRtmChannel.join(new ResultCallback<Void>() {
             @Override
             public void onSuccess(Void responseInfo) {
-                System.out.println("join channel success!");
+                if (!channel.equals("1")) {
+                    mainFrame.addMessage("\n\njoin channel success!\n");
+                }
             }
 
             @Override
             public void onFailure(ErrorInfo errorInfo) {
-                System.out.println("join channel failure! errorCode = "
-                        + errorInfo.getErrorCode());
+                if (!channel.equals("1")) {
+                    mainFrame.addMessage("\n\njoin channel failure! errorCode = " + errorInfo.getErrorCode() + "\n");
+                }
             }
         });
 
         while (true) {
-            if (counter == 0){
+            if (counter == 0 && !channel.equals("1")) {
                 mainFrame.addMessage("please input message you want to send," + "\nor input \'quit\' " + " to leave groupChat, " + "\nor input \'members\' to list members");
                 counter++;
             }
 
-            if (!mainFrame.getMessage().equals("")){
+            if (!mainFrame.getMessage().equals("")) {
                 System.out.println("MSG: " + mainFrame.getMessage());
                 if (mainFrame.getMessage().equals("quit")) {
                     mRtmChannel.leave(null);
@@ -137,11 +127,13 @@ public class RtmJavaDemo {
                     return;
                 } else if (mainFrame.getMessage().equals("members")) {
                     getChannelMemberList();
-                } else{
+                    mainFrame.clearMessage();
+
+                } else {
                     sendChannelMessage(mainFrame.getMessage());
                     mainFrame.clearMessage();
                 }
-            } else{
+            } else {
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
@@ -176,8 +168,7 @@ public class RtmJavaDemo {
             @Override
             public void onSuccess(final List<RtmChannelMember> responseInfo) {
                 for (int i = 0; i < responseInfo.size(); i++) {
-                    System.out.println("memberlist[" + i + "]" + ": "
-                            + responseInfo.get(i).getUserId());
+                    System.out.println("memberlist[" + i + "]" + ": " + responseInfo.get(i).getUserId());
                 }
             }
 
@@ -222,6 +213,7 @@ public class RtmJavaDemo {
 
         ////////////////////////////////////////////////////////////
 
+
         RtmJavaDemo client_ = new RtmJavaDemo();
         client_.init();
         while (true) {
@@ -230,17 +222,18 @@ public class RtmJavaDemo {
                     continue;
             }
 
-            int choice = mainFrame.askUserInt("1: peer to peer chat\n" + "2: group chat\n" + "3: logout" + "\nplease input your choice:");
+            int choice = mainFrame.askUserInt("1: group chat\n" + "2: logout" + "\nplease input your choice:");
 
             if (choice == 1) {
-                String dst = mainFrame.askUserString("please input your destination user ID:");
-                client_.p2pChat(dst);
+
+                mainFrame.addMessage("Waiting to pair you with another user ...........");
+
+//                String channel = mainFrame.askUserString("please input your channel ID:");
+                client_.groupChat("1", mainFrame);
+
             } else if (choice == 2) {
-                String channel = mainFrame.askUserString("please input your channel ID:");
-                client_.groupChat(channel, mainFrame);
-            } else if (choice == 3) {
                 client_.logout();
-                String quit = mainFrame.askUserString("quit the demo? yes/no");
+                String quit = mainFrame.askUserString("Quit FriendMe? yes/no");
                 if (quit.equals("yes")) {
                     break;
                 }
