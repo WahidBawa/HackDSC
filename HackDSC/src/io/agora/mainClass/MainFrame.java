@@ -34,9 +34,9 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 message = field.getText();
-                System.out.println("MESSAGE: " + message);
+                System.out.println("MESSAGE: " + message + "\n\n");
                 textArea.append("\n" + message);
-//                field.setText("");
+                field.setText("");
             }
         });
 
