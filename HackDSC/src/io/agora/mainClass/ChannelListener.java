@@ -37,14 +37,12 @@ class ChannelListener implements RtmChannelListener {
     @Override
     public void onMemberJoined(RtmChannelMember member) {
         String account = member.getUserId();
-        System.out.println("member " + account + " joined the channel "
-                + channel_);
+        mainFrame.addMessage("\n\n" + account + " joined the channel!!\n");
     }
 
     @Override
     public void onMemberLeft(RtmChannelMember member) {
         String account = member.getUserId();
-        System.out.println("member " + account + " lefted the channel "
-                + channel_);
+        mainFrame.addMessage("\n\n" + account + " left the channel!!\n");
     }
 }
