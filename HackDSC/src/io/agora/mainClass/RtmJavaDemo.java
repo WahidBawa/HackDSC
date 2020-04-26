@@ -73,6 +73,7 @@ public class RtmJavaDemo {
                 loginStatus = true;
                 System.out.println("login success!");
             }
+
             //@Override
             public void onFailure(ErrorInfo errorInfo) {
                 loginStatus = false;
@@ -89,8 +90,8 @@ public class RtmJavaDemo {
 
     public void p2pChat(String dst) {
         String msg;
-        while(true) {
-            System.out.println("please input message you want to send,"+
+        while (true) {
+            System.out.println("please input message you want to send," +
                     " or input \'quit\' " + " to leave p2pChat");
             msg = scn.nextLine();
             if (msg.equals("quit")) {
@@ -121,8 +122,8 @@ public class RtmJavaDemo {
                         + errorInfo.getErrorCode());
             }
         });
-        while(true) {
-            System.out.println("please input message you want to send,"+
+        while (true) {
+            System.out.println("please input message you want to send," +
                     " or input \'quit\' " + " to leave groupChat, " +
                     "or input \'members\' to list members");
             msg = scn.nextLine();
@@ -211,7 +212,7 @@ public class RtmJavaDemo {
 
         RtmJavaDemo client_ = new RtmJavaDemo();
         client_.init();
-        while(true) {
+        while (true) {
             if (!client_.loginStatus) {
                 if (!client_.login())
                     continue;
@@ -227,28 +228,24 @@ public class RtmJavaDemo {
             int choice = mainFrame.askUserInt("1: peer to peer chat\n" + "2: group chat\n" + "3: logout" + "\nplease input your choice:");
 
             if (choice == 1) {
-                String dst =  mainFrame.askUserString("please input your destination user ID:");
+                String dst = mainFrame.askUserString("please input your destination user ID:");
 //                System.out.println("input destination ID:" + dst);
                 client_.p2pChat(dst);
             } else if (choice == 2) {
-                String channel =  mainFrame.askUserString("please input your channel ID:");
+                String channel = mainFrame.askUserString("please input your channel ID:");
                 client_.groupChat(channel);
+            } else if (choice == 3) {
+                client_.logout();
+                String quit = mainFrame.askUserString("quit the demo? yes/no");
+                if (quit.equals("yes")) {
+                    break;
+                }
             }
-//            else if (choice == 3) {
-//                client_.logout();
-//                System.out.println("quit the demo? yes/no");
-//                scn.nextLine();
-//                if (scn.hasNextLine()) {
-//                    String quit = scn.nextLine();
-//                    if (quit.equals("yes")) {
-//                        break;
-//                    }
-//                }
 //            } else {
 //                continue;
 //            }
         }
-//        System.out.println("leaving demo...");
-//        System.exit(0);
+        System.out.println("leaving demo...");
+        System.exit(0);
     }
 }
