@@ -477,3 +477,29 @@ INFO    2020-04-26T00:09:11:511  56863; [rlbs/u] responsed from 209.177.94.19:97
 INFO    2020-04-26T00:09:11:511  56863; [rs] updateServers 128.1.75.151:8913, priority 3
 INFO    2020-04-26T00:09:11:511  56863; [rs] updateServers 23.236.124.12:8913, priority 3
 INFO    2020-04-26T00:09:11:511  56863; [rs] updateServers 107.155.5.220:8913, priority 3
+
+
+INFO    2020-04-26T00:10:11:343  58069; Agora Logger Started
+INFO    2020-04-26T00:10:11:343  58069; Agora SDK ver 1.2.2 build 331, built on Dec  5 2019 03:16:59
+INFO    2020-04-26T00:10:11:343  58069; Agora SDK git ver:e33d32ec4 and branch:HEAD
+INFO    2020-04-26T00:10:11:343  58069; CacheManager: load cache from storage elapsed 0
+INFO    2020-04-26T00:10:11:343  58069; use event engine
+INFO    2020-04-26T00:10:11:345  58069; [rtm-API] rtm service initialize
+INFO    2020-04-26T00:10:11:345  58069; [rtm-API] rtm start service
+INFO    2020-04-26T00:10:11:345  58110; Agora Service Worker Thread started: 0x7f6e68434730
+INFO    2020-04-26T00:10:11:345  58110; network: ipv6 prefix is cleared
+INFO    2020-04-26T00:10:11:345  58110; network: 'NETWORK_UNKOWN' -> 'LAN' ipv4/v6 '192.******.12'/'' gw ''/'' subtype 0 level -1 ssid '****' bssid '' rssi 0 asu 0
+INFO    2020-04-26T00:10:11:346  58112; Agora Service Worker Thread started: 0x7f6de00013d0
+INFO    2020-04-26T00:10:11:346  58112; [ap] onParsedDns with err 0, 209.177.94.19, 69.172.244.42, 50.17.126.121, 52.52.84.170, 107.155.14.132, 
+INFO    2020-04-26T00:10:11:346  58110; [rs] updateServers 199.190.44.36:8000, priority 1
+INFO    2020-04-26T00:10:11:346  58110; [rs] updateServers 199.190.44.37:8000, priority 1
+INFO    2020-04-26T00:10:11:346  58110; [rlbs] selected: 209.177.94.19:9700
+INFO    2020-04-26T00:10:11:346  58110; [rlbs] request rs list from 209.177.94.19:9700 with fake ch report_lbs_1587874211346.......
+INFO    2020-04-26T00:10:11:349  58110; [rs] dns parse result code: 0, servers size: 3
+INFO    2020-04-26T00:10:11:349  58110; [rs] updateServers 128.1.75.151:8000, priority 2
+INFO    2020-04-26T00:10:11:349  58110; [rs] updateServers 107.155.5.220:8000, priority 2
+INFO    2020-04-26T00:10:11:349  58110; [rs] updateServers 65.255.41.2:8000, priority 2
+INFO    2020-04-26T00:10:11:603  58110; [rlbs/u] responsed from 209.177.94.19:9700 with servers 107.155.2.163:8913
+INFO    2020-04-26T00:10:11:603  58110; [rs] updateServers 107.155.2.163:8913, priority 3
+INFO    2020-04-26T00:10:11:603  58110; [rs] updateServers 209.177.94.18:8913, priority 3
+INFO    2020-04-26T00:10:11:603  58110; [rs] updateServers 128.1.75.151:8913, priority 3
