@@ -17,48 +17,7 @@ import io.agora.rtm.RtmChannelMember;
 import io.agora.rtm.RtmStatusCode;
 import io.agora.rtm.RtmChannelAttribute;
 
-class APPID {
-    public static final String APP_ID = "2ff851eaa06143048058a623324cb095";
-}
-
-class ChannelListener implements RtmChannelListener {
-    private String channel_;
-
-    public ChannelListener(String channel) {
-        channel_ = channel;
-    }
-
-    @Override
-    public void onMemberCountUpdated(int memberCount) {
-    }
-
-    @Override
-    public void onAttributesUpdated(List<RtmChannelAttribute> attribute) {
-    }
-
-    @Override
-    public void onMessageReceived(
-            final RtmMessage message, final RtmChannelMember fromMember) {
-        String account = fromMember.getUserId();
-        String msg = message.getText();
-        System.out.println("Receive message from channel: " + channel_ +
-                " member: " + account + " message: " + msg);
-    }
-
-    @Override
-    public void onMemberJoined(RtmChannelMember member) {
-        String account = member.getUserId();
-        System.out.println("member " + account + " joined the channel "
-                + channel_);
-    }
-
-    @Override
-    public void onMemberLeft(RtmChannelMember member) {
-        String account = member.getUserId();
-        System.out.println("member " + account + " lefted the channel "
-                + channel_);
-    }
-}
+import javax.swing.*;
 
 public class RtmJavaDemo {
     private RtmClient mRtmClient;
@@ -235,6 +194,20 @@ public class RtmJavaDemo {
     }
 
     public static void main(String[] args) {
+
+        ////////////////////////////////////////////////////////////
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame frame = new MainFrame("Hello World Swing!");
+                frame.setSize(500, 400);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
+            }
+        });
+
+        ////////////////////////////////////////////////////////////
+
         RtmJavaDemo client_ = new RtmJavaDemo();
         client_.init();
         while(true) {

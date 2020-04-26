@@ -425,3 +425,55 @@ INFO    2020-04-25T01:21:25:140 114471; [rlbs/u] responsed from 209.177.94.19:97
 INFO    2020-04-25T01:21:25:140 114471; [rs] updateServers 65.255.41.2:8913, priority 3
 INFO    2020-04-25T01:21:25:140 114471; [rs] updateServers 128.1.75.151:8913, priority 3
 INFO    2020-04-25T01:21:25:140 114471; [rs] updateServers 23.236.124.12:8913, priority 3
+
+
+INFO    2020-04-25T18:58:03:411  51159; Agora Logger Started
+INFO    2020-04-25T18:58:03:411  51159; Agora SDK ver 1.2.2 build 331, built on Dec  5 2019 03:16:59
+INFO    2020-04-25T18:58:03:411  51159; Agora SDK git ver:e33d32ec4 and branch:HEAD
+INFO    2020-04-25T18:58:03:412  51159; CacheManager: load cache from storage elapsed 1
+INFO    2020-04-25T18:58:03:412  51159; use event engine
+INFO    2020-04-25T18:58:03:415  51159; [rtm-API] rtm service initialize
+INFO    2020-04-25T18:58:03:415  51159; [rtm-API] rtm start service
+INFO    2020-04-25T18:58:03:415  51182; Agora Service Worker Thread started: 0x7f06ac3436a0
+INFO    2020-04-25T18:58:03:415  51182; network: ipv6 prefix is cleared
+INFO    2020-04-25T18:58:03:415  51182; network: 'NETWORK_UNKOWN' -> 'LAN' ipv4/v6 '192.******.12'/'' gw ''/'' subtype 0 level -1 ssid '****' bssid '' rssi 0 asu 0
+INFO    2020-04-25T18:58:03:416  51184; Agora Service Worker Thread started: 0x7f06380013c0
+INFO    2020-04-25T18:58:03:416  51184; [ap] onParsedDns with err 0, 209.177.94.19, 69.172.244.42, 50.17.126.121, 52.52.84.170, 107.155.14.132, 
+INFO    2020-04-25T18:58:03:416  51182; [rs] updateServers 199.190.44.36:8000, priority 1
+INFO    2020-04-25T18:58:03:416  51182; [rs] updateServers 199.190.44.37:8000, priority 1
+INFO    2020-04-25T18:58:03:416  51182; [rlbs] selected: 209.177.94.19:9700
+INFO    2020-04-25T18:58:03:416  51182; [rlbs] request rs list from 209.177.94.19:9700 with fake ch report_lbs_1587855483416.......
+INFO    2020-04-25T18:58:03:416  51182; [rs] dns parse result code: 0, servers size: 3
+INFO    2020-04-25T18:58:03:416  51182; [rs] updateServers 128.1.75.151:8000, priority 2
+INFO    2020-04-25T18:58:03:416  51182; [rs] updateServers 107.155.5.220:8000, priority 2
+INFO    2020-04-25T18:58:03:416  51182; [rs] updateServers 65.255.41.2:8000, priority 2
+INFO    2020-04-25T18:58:03:668  51182; [rlbs/u] responsed from 209.177.94.19:9700 with servers 128.1.75.151:8913
+INFO    2020-04-25T18:58:03:668  51182; [rs] updateServers 128.1.75.151:8913, priority 3
+INFO    2020-04-25T18:58:03:668  51182; [rs] updateServers 69.28.49.169:8913, priority 3
+INFO    2020-04-25T18:58:03:668  51182; [rs] updateServers 107.155.2.163:8913, priority 3
+
+
+INFO    2020-04-26T00:09:11:116  56817; Agora Logger Started
+INFO    2020-04-26T00:09:11:116  56817; Agora SDK ver 1.2.2 build 331, built on Dec  5 2019 03:16:59
+INFO    2020-04-26T00:09:11:116  56817; Agora SDK git ver:e33d32ec4 and branch:HEAD
+INFO    2020-04-26T00:09:11:117  56817; CacheManager: load cache from storage elapsed 1
+INFO    2020-04-26T00:09:11:117  56817; use event engine
+INFO    2020-04-26T00:09:11:120  56817; [rtm-API] rtm service initialize
+INFO    2020-04-26T00:09:11:120  56817; [rtm-API] rtm start service
+INFO    2020-04-26T00:09:11:121  56863; Agora Service Worker Thread started: 0x7f83b4479f80
+INFO    2020-04-26T00:09:11:121  56863; network: ipv6 prefix is cleared
+INFO    2020-04-26T00:09:11:121  56863; network: 'NETWORK_UNKOWN' -> 'LAN' ipv4/v6 '192.******.12'/'' gw ''/'' subtype 0 level -1 ssid '****' bssid '' rssi 0 asu 0
+INFO    2020-04-26T00:09:11:121  56865; Agora Service Worker Thread started: 0x7f83340013d0
+INFO    2020-04-26T00:09:11:122  56865; [ap] onParsedDns with err 0, 209.177.94.19, 69.172.244.42, 50.17.126.121, 52.52.84.170, 107.155.14.132, 
+INFO    2020-04-26T00:09:11:122  56863; [rs] updateServers 199.190.44.36:8000, priority 1
+INFO    2020-04-26T00:09:11:122  56863; [rs] updateServers 199.190.44.37:8000, priority 1
+INFO    2020-04-26T00:09:11:122  56863; [rlbs] selected: 209.177.94.19:9700
+INFO    2020-04-26T00:09:11:122  56863; [rlbs] request rs list from 209.177.94.19:9700 with fake ch report_lbs_1587874151122.......
+INFO    2020-04-26T00:09:11:125  56863; [rs] dns parse result code: 0, servers size: 3
+INFO    2020-04-26T00:09:11:125  56863; [rs] updateServers 128.1.75.151:8000, priority 2
+INFO    2020-04-26T00:09:11:125  56863; [rs] updateServers 107.155.5.220:8000, priority 2
+INFO    2020-04-26T00:09:11:125  56863; [rs] updateServers 65.255.41.2:8000, priority 2
+INFO    2020-04-26T00:09:11:511  56863; [rlbs/u] responsed from 209.177.94.19:9700 with servers 128.1.75.151:8913
+INFO    2020-04-26T00:09:11:511  56863; [rs] updateServers 128.1.75.151:8913, priority 3
+INFO    2020-04-26T00:09:11:511  56863; [rs] updateServers 23.236.124.12:8913, priority 3
+INFO    2020-04-26T00:09:11:511  56863; [rs] updateServers 107.155.5.220:8913, priority 3
