@@ -57,10 +57,8 @@ public class RtmJavaDemo {
         scn = new Scanner(System.in);
     }
 
-    public boolean login() {
-        System.out.println("Please enter userID (literal \"null\" or starting " +
-                "with space is not allowed, no more than 64 charaters!):");
-        String userId = scn.nextLine();
+    public boolean login(MainFrame mainFrame) {
+        String userId = mainFrame.askUserString("Please enter userID (literal \"null\" or starting " + "with space is not allowed, no more than 64 charaters!):");
         if (userId.equals("") ||
                 userId.startsWith(" ") ||
                 userId.equals("null")) {
@@ -197,7 +195,7 @@ public class RtmJavaDemo {
     public static void main(String[] args) {
 
         ////////////////////////////////////////////////////////////
-        MainFrame mainFrame = new MainFrame("Test");
+        MainFrame mainFrame = new MainFrame("FriendMe");
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = mainFrame;
@@ -207,29 +205,20 @@ public class RtmJavaDemo {
             }
         });
 
-        mainFrame.addMessage("This is message 1");
         ////////////////////////////////////////////////////////////
 
         RtmJavaDemo client_ = new RtmJavaDemo();
         client_.init();
         while (true) {
             if (!client_.loginStatus) {
-                if (!client_.login())
+                if (!client_.login(mainFrame))
                     continue;
             }
-//            System.out.println("1: peer to peer chat\n"
-//                    + "2: group chat\n"
-//                    + "3: logout");
-            System.out.println("please input your choice:");
 
-//            mainFrame.askUser("1: peer to peer chat\n" + "2: group chat\n" + "3: logout" + "please input your choice:");
-
-//            Scanner scn = new Scanner(System.in);
             int choice = mainFrame.askUserInt("1: peer to peer chat\n" + "2: group chat\n" + "3: logout" + "\nplease input your choice:");
 
             if (choice == 1) {
                 String dst = mainFrame.askUserString("please input your destination user ID:");
-//                System.out.println("input destination ID:" + dst);
                 client_.p2pChat(dst);
             } else if (choice == 2) {
                 String channel = mainFrame.askUserString("please input your channel ID:");
