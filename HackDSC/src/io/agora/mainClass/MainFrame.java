@@ -10,6 +10,8 @@ public class MainFrame extends JFrame {
 
     private DetailsPanel detailsPanel;
     private final JTextArea textArea = new JTextArea();
+    private JTextField field = new JTextField();
+    private String message = "";
     public MainFrame(String title){
         super(title);
 
@@ -18,7 +20,6 @@ public class MainFrame extends JFrame {
 
         //Create Swing Component
         JButton button  = new JButton("Send Message");
-        JTextField field = new JTextField();
         //Add Swing components to content pane
         Container c = getContentPane();
 
@@ -32,8 +33,10 @@ public class MainFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                textArea.append("\n" + field.getText());
-                field.setText("");
+                message = field.getText();
+                System.out.println("MESSAGE: " + message);
+                textArea.append("\n" + message);
+//                field.setText("");
             }
         });
 
@@ -42,7 +45,12 @@ public class MainFrame extends JFrame {
     public void addMessage(String input){
         textArea.append(input);
     }
-
+    public String getMessage(){
+        return message;
+    }
+    public void clearMessage(){
+        message = "";
+    }
     public void clear(){
         textArea.setText("");
     }

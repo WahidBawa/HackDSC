@@ -100,8 +100,9 @@ public class RtmJavaDemo {
         }
     }
 
-    public void groupChat(String channel) {
+    public void groupChat(String channel, MainFrame mainFrame) {
         String msg;
+        int counter = 0;
         mRtmChannel = mRtmClient.createChannel(channel,
                 new ChannelListener(channel));
         if (mRtmChannel == null) {
@@ -120,21 +121,51 @@ public class RtmJavaDemo {
                         + errorInfo.getErrorCode());
             }
         });
+
+//        while(true) {
+//            System.out.println("please input message you want to send,"+
+//                    " or input \'quit\' " + " to leave groupChat, " +
+//                    "or input \'members\' to list members");
+//            msg = scn.nextLine();
+//            if (msg.equals("quit")) {
+//                mRtmChannel.leave(null);
+//                mRtmChannel.release();
+//                mRtmChannel = null;
+//                return;
+//            } else if (msg.equals("members")) {
+//                getChannelMemberList();
+//            } else {
+//                sendChannelMessage(msg);
+//            }
+//        }
+
         while (true) {
-            System.out.println("please input message you want to send," +
-                    " or input \'quit\' " + " to leave groupChat, " +
-                    "or input \'members\' to list members");
-            msg = scn.nextLine();
-            if (msg.equals("quit")) {
-                mRtmChannel.leave(null);
-                mRtmChannel.release();
-                mRtmChannel = null;
-                return;
-            } else if (msg.equals("members")) {
-                getChannelMemberList();
-            } else {
-                sendChannelMessage(msg);
+            if (counter == 0){
+                mainFrame.addMessage("please input message you want to send," + " or input \'quit\' " + " to leave groupChat, " + "or input \'members\' to list members");
+                counter++;
             }
+//            msg = mainFrame.getMessage();
+
+            if (!mainFrame.getMessage().equals("")){
+                System.out.println("MSG: " + mainFrame.getMessage());
+                if (mainFrame.getMessage().equals("quit")) {
+                    mRtmChannel.leave(null);
+                    mRtmChannel.release();
+                    mRtmChannel = null;
+                    return;
+                } else if (mainFrame.getMessage().equals("members")) {
+                    getChannelMemberList();
+                } else{
+                    sendChannelMessage(mainFrame.getMessage());
+                    counter = 0;
+                    mainFrame.clearMessage();
+                    msg = mainFrame.getMessage();
+                }
+            } else{
+                System.out.println("");
+            }
+
+
         }
     }
 
@@ -177,6 +208,7 @@ public class RtmJavaDemo {
     public void sendChannelMessage(String msg) {
         RtmMessage message = mRtmClient.createMessage();
         message.setText(msg);
+
 
         mRtmChannel.sendMessage(message, new ResultCallback<Void>() {
             @Override
@@ -222,7 +254,7 @@ public class RtmJavaDemo {
                 client_.p2pChat(dst);
             } else if (choice == 2) {
                 String channel = mainFrame.askUserString("please input your channel ID:");
-                client_.groupChat(channel);
+                client_.groupChat(channel, mainFrame);
             } else if (choice == 3) {
                 client_.logout();
                 String quit = mainFrame.askUserString("quit the demo? yes/no");
