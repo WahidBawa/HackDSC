@@ -196,16 +196,17 @@ public class RtmJavaDemo {
     public static void main(String[] args) {
 
         ////////////////////////////////////////////////////////////
-
+        MainFrame mainFrame = new MainFrame("Test");
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                JFrame frame = new MainFrame("Hello World Swing!");
+                JFrame frame = mainFrame;
                 frame.setSize(500, 400);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
         });
 
+        mainFrame.addMessage("This is message 1");
         ////////////////////////////////////////////////////////////
 
         RtmJavaDemo client_ = new RtmJavaDemo();
@@ -215,44 +216,39 @@ public class RtmJavaDemo {
                 if (!client_.login())
                     continue;
             }
-            System.out.println("1: peer to peer chat\n"
-                    + "2: group chat\n"
-                    + "3: logout");
+//            System.out.println("1: peer to peer chat\n"
+//                    + "2: group chat\n"
+//                    + "3: logout");
             System.out.println("please input your choice:");
-            Scanner scn = new Scanner(System.in);
-            int choice;
-            if (scn.hasNextInt()) {
-                choice = scn.nextInt();
-            } else {
-                System.out.println("your input is not an int type");
-                continue;
-            }
+
+//            mainFrame.askUser("1: peer to peer chat\n" + "2: group chat\n" + "3: logout" + "please input your choice:");
+
+//            Scanner scn = new Scanner(System.in);
+            int choice = mainFrame.askUserInt("1: peer to peer chat\n" + "2: group chat\n" + "3: logout" + "\nplease input your choice:");
+
             if (choice == 1) {
-                System.out.println("please input your destination user ID:");
-                scn.nextLine();
-                String dst = scn.nextLine();
-                System.out.println("input destination ID:" + dst);
+                String dst =  mainFrame.askUserString("please input your destination user ID:");
+//                System.out.println("input destination ID:" + dst);
                 client_.p2pChat(dst);
             } else if (choice == 2) {
-                System.out.println("please input your channel ID:");
-                scn.nextLine();
-                String channel = scn.nextLine();
+                String channel =  mainFrame.askUserString("please input your channel ID:");
                 client_.groupChat(channel);
-            } else if (choice == 3) {
-                client_.logout();
-                System.out.println("quit the demo? yes/no");
-                scn.nextLine();
-                if (scn.hasNextLine()) {
-                    String quit = scn.nextLine();
-                    if (quit.equals("yes")) {
-                        break;
-                    }
-                }
-            } else {
-                continue;
             }
+//            else if (choice == 3) {
+//                client_.logout();
+//                System.out.println("quit the demo? yes/no");
+//                scn.nextLine();
+//                if (scn.hasNextLine()) {
+//                    String quit = scn.nextLine();
+//                    if (quit.equals("yes")) {
+//                        break;
+//                    }
+//                }
+//            } else {
+//                continue;
+//            }
         }
-        System.out.println("leaving demo...");
-        System.exit(0);
+//        System.out.println("leaving demo...");
+//        System.exit(0);
     }
 }
