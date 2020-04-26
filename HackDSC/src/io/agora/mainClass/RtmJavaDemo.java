@@ -113,7 +113,7 @@ public class RtmJavaDemo {
         });
 
         while (true) {
-            if (counter == 0 && !channel.equals("1")) {
+            if (counter == 0) {
                 mainFrame.addMessage("please input message you want to send," + "\nor input \'quit\' " + " to leave groupChat, " + "\nor input \'members\' to list members");
                 counter++;
             }
@@ -225,12 +225,8 @@ public class RtmJavaDemo {
             int choice = mainFrame.askUserInt("1: group chat\n" + "2: logout" + "\nplease input your choice:");
 
             if (choice == 1) {
-
-                mainFrame.addMessage("Waiting to pair you with another user ...........");
-
-//                String channel = mainFrame.askUserString("please input your channel ID:");
+                String channel = mainFrame.askUserString("please input your channel ID:");
                 client_.groupChat("1", mainFrame);
-
             } else if (choice == 2) {
                 client_.logout();
                 String quit = mainFrame.askUserString("Quit FriendMe? yes/no");
